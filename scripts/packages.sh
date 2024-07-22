@@ -8,7 +8,8 @@ sudo apt-get install -y \
     git-flow \
     openconnect \
     unzip \
-    firefox
+    firefox \
+    neofetch
 
 # Docker e Docker Compose
 sudo VERSION=$DOCKER_VERSION sh -c "$(curl -fsSL https://get.docker.com)" --dry-run
