@@ -1,5 +1,7 @@
 # My Dot files:
 
+![neofetch](./neofetch.png)
+
 ## Init
 Installing git and run install my dot files
 ```bash
