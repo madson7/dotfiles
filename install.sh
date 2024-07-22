@@ -7,3 +7,4 @@ source scripts/_lib.sh
 source scripts/pre-tasks.sh
 source scripts/packages.sh
 source scripts/symbolic-link.sh
+source scripts/pos-tasks.sh
