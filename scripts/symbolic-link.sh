@@ -2,6 +2,7 @@
 
 rm -fr ~/.zshrc
 rm -fr ~/.config-zsh
+rm -fr ~/.ssh
 mkdir -p ~/.config-zsh
 mkdir -p ~/.ssh
 
