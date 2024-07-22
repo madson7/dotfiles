@@ -30,5 +30,7 @@ ansible-vault decrypt ${PWD}/config/zsh/config-zsh/.alias_rc --vault-password-fi
 ansible-vault decrypt ${PWD}/config/zsh/config-zsh/.biglinux-zsh-config --vault-password-file "$VAULT_PASS_FILE"
 ansible-vault decrypt ${PWD}/config/zsh/config-zsh/.biglinux-zsh-prompt --vault-password-file "$VAULT_PASS_FILE"
 ansible-vault decrypt ${PWD}/config/zsh/config-zsh/.function_rc --vault-password-file "$VAULT_PASS_FILE"
+ansible-vault encrypt ${PWD}/config/ssh/id_rsa --vault-password-file "$VAULT_PASS_FILE"
+ansible-vault encrypt ${PWD}/config/ssh/id_rsa.pub --vault-password-file "$VAULT_PASS_FILE"
 
 rm "$VAULT_PASS_FILE"
