@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+sudo sysctl -p
+
 sudo apt-get autoremove -y && \
     sudo apt-get clean -y
 
