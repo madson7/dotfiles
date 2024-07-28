@@ -7,7 +7,7 @@ test "${DEBUG:-}" && set -x
 umask 002
 
 # Thanks to https://unix.stackexchange.com/a/145654/108960
-log_file=log-$(date +'%Y-%m-%d_%H-%M-%S').txt
+log_file=log-$(date +'%Y-%m-%d_%H-%M-%S').log
 exec &> >(tee -a "$log_file")
 
 # Allow `.env` overrides using the `.env.custom` file.
