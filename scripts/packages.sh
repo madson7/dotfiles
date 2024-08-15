@@ -4,12 +4,22 @@ for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker c
 
 # Instalando pacotes
 sudo apt-get install -y \
-    zsh \
-    git-flow \
-    openconnect \
-    unzip \
+    ansible \
+    build-essential \
     firefox \
-    neofetch
+    git-flow \
+    gzip \
+    neofetch \
+    nfs-common \
+    openconnect \
+    openssl \
+    peek \
+    ssh \
+    sshpass \
+    unzip \
+    vlc \
+    zip \
+    zsh
 
 # Docker e Docker Compose
 sudo VERSION=$DOCKER_VERSION sh -c "$(curl -fsSL https://get.docker.com)" --dry-run
