@@ -32,5 +32,7 @@ fi
 # Env exec environment
 PWD=$(pwd)
 
+read -p "Digite I para instalar, E para encriptar ou D para desencriptar (I/E/D): " IED && echo
+
 # Solicita ao usuário que insira a senha do vault
 read -sp "Por favor, digite sua senha vault: " PASS_VAULT && echo
