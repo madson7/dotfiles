@@ -38,4 +38,4 @@ yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/mast
 
 sudo snap install kubectl --classic
 sudo snap install helm --classic
-# sudo snap install dbeaver-ce --classic
+sudo snap install dbeaver-ce --classic
