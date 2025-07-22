@@ -13,5 +13,8 @@ ansible-vault encrypt ${PWD}/config/zsh/config-zsh/.biglinux-zsh-prompt --vault-
 ansible-vault encrypt ${PWD}/config/zsh/config-zsh/.function_rc --vault-password-file "$VAULT_PASS_FILE" || true
 ansible-vault encrypt ${PWD}/config/ssh/id_rsa --vault-password-file "$VAULT_PASS_FILE" || true
 ansible-vault encrypt ${PWD}/config/ssh/id_rsa.pub --vault-password-file "$VAULT_PASS_FILE" || true
+ansible-vault encrypt ${PWD}/config/sys/wg0.conf --vault-password-file "$VAULT_PASS_FILE" || true
+ansible-vault encrypt ${PWD}/config/sys/resolv.conf --vault-password-file "$VAULT_PASS_FILE" || true
+ansible-vault encrypt ${PWD}/config/sys/config.json --vault-password-file "$VAULT_PASS_FILE" || true
 
 rm "$VAULT_PASS_FILE"

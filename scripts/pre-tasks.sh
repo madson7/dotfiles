@@ -8,27 +8,28 @@ sudo tee /etc/sudoers.d/$USER > /dev/null << EOF
 $USER ALL=(ALL) NOPASSWD:ALL
 EOF
 
-echo '#!/bin/bash' | sudo tee /usr/local/bin/apt-get
-echo 'exec /usr/bin/apt-get --allow-downgrades "$@"' | sudo tee -a /usr/local/bin/apt-get
-sudo chmod +x /usr/local/bin/apt-get
+# sudo apt-get update && \
+#     sudo apt-get upgrade -y && \
+#     sudo apt-get autoremove -y
 
-curl -s -k https://gitlab.devops.decea.intraer/-/snippets/7/raw/main/decea-intraer.crt -o /tmp/decea-intraer.crt && \
-    curl -s -k https://gitlab.ramos.intra.net/-/snippets/6/raw/main/ramos.intra.net.crt -o /tmp/ramos.intra.net.crt && \
-    sudo mv /tmp/decea-intraer.crt /usr/local/share/ca-certificates/decea_rootca.crt && \
-    sudo mv /tmp/ramos.intra.net.crt /usr/local/share/ca-certificates/ramos_rootca.crt && \
-    sudo update-ca-certificates
+# echo '#!/bin/bash' | sudo tee /usr/local/bin/apt-get
+# echo 'exec /usr/bin/apt-get --allow-downgrades "$@"' | sudo tee -a /usr/local/bin/apt-get
+# sudo chmod +x /usr/local/bin/apt-get
+
+# curl -s -k https://gitlab.devops.decea.intraer/-/snippets/7/raw/main/decea-intraer.crt -o /tmp/decea-intraer.crt && \
+#     curl -s -k https://gitlab.ramos.intra.net/-/snippets/6/raw/main/ramos.intra.net.crt -o /tmp/ramos.intra.net.crt && \
+#     sudo mv /tmp/decea-intraer.crt /usr/local/share/ca-certificates/decea_rootca.crt && \
+#     sudo mv /tmp/ramos.intra.net.crt /usr/local/share/ca-certificates/ramos_rootca.crt && \
+#     sudo update-ca-certificates
 
 # # Docker e Docker Compose
 # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 # sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-# Add the repository to sources.list.d windsurf stable codeiumdata
-curl -fsSL "https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/windsurf.gpg" | sudo gpg --dearmor -o /usr/share/keyrings/windsurf-stable-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/windsurf-stable-archive-keyring.gpg arch=amd64] https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt stable main" | sudo tee /etc/apt/sources.list.d/windsurf.list > /dev/null
+# # Add the repository to sources.list.d windsurf stable codeiumdata
+# curl -fsSL "https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/windsurf.gpg" | sudo gpg --dearmor -o /usr/share/keyrings/windsurf-stable-archive-keyring.gpg
+# echo "deb [signed-by=/usr/share/keyrings/windsurf-stable-archive-keyring.gpg arch=amd64] https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt stable main" | sudo tee /etc/apt/sources.list.d/windsurf.list > /dev/null
 
-sudo apt-get update && \
-    sudo apt-get upgrade -y && \
-    sudo apt-get autoremove -y
 
 # Cria um arquivo temporário para armazenar a senha
 VAULT_PASS_FILE=$(mktemp)
@@ -43,5 +44,7 @@ ansible-vault decrypt ${PWD}/config/zsh/config-zsh/.biglinux-zsh-prompt --vault-
 ansible-vault decrypt ${PWD}/config/zsh/config-zsh/.function_rc --vault-password-file "$VAULT_PASS_FILE" || true
 ansible-vault decrypt ${PWD}/config/ssh/id_rsa --vault-password-file "$VAULT_PASS_FILE" || true
 ansible-vault decrypt ${PWD}/config/ssh/id_rsa.pub --vault-password-file "$VAULT_PASS_FILE" || true
+ansible-vault decrypt ${PWD}/config/sys/wg0.conf --vault-password-file "$VAULT_PASS_FILE" || true
+ansible-vault decrypt ${PWD}/config/sys/resolv.conf --vault-password-file "$VAULT_PASS_FILE" || true
 
 rm "$VAULT_PASS_FILE"
